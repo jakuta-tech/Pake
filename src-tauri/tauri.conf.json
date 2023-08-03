@@ -1,30 +1,43 @@
 {
-  "package": {
-    "productName": "WeRead",
-    "version": "1.0.0"
-  },
-  "tauri": {
-    "windows": [
-      {
-        "url": "https://weread.qq.com/",
-        "transparent": true,
-        "fullscreen": false,
-        "width": 1200,
-        "height": 780,
-        "resizable": true
-      }
-    ],
-    "security": {
-      "csp": null
+    "package": {
+        "productName": "WeRead",
+        "version": "1.0.0"
     },
-    "updater": {
-      "active": false
+    "tauri": {
+        "security": {
+            "csp": null,
+            "dangerousRemoteDomainIpcAccess": [
+                {
+                    "domain": "weread.qq.com",
+                    "windows": [
+                        "pake"
+                    ],
+                    "enableTauriAPI": true
+                }
+            ]
+        },
+        "updater": {
+            "active": false
+        },
+        "systemTray": {
+            "iconPath": "png/icon_512.png",
+            "iconAsTemplate": true
+        },
+        "allowlist": {
+            "all": true,
+            "fs": {
+                "all": true,
+                "scope": [
+                    "$DOWNLOAD/*"
+                ]
+            }
+        }
+    },
+    "build": {
+        "withGlobalTauri": true,
+        "devPath": "../dist",
+        "distDir": "../dist",
+        "beforeBuildCommand": "",
+        "beforeDevCommand": ""
     }
-  },
-  "build": {
-    "devPath": "../dist",
-    "distDir": "../dist",
-    "beforeBuildCommand": "",
-    "beforeDevCommand": ""
-  }
 }

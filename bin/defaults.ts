@@ -7,7 +7,21 @@ export const DEFAULT_PAKE_OPTIONS: PakeCliOptions = {
   fullscreen: false,
   resizable: true,
   transparent: false,
+  userAgent: '',
+  showMenu: false,
+  showSystemTray: false,
+  multiArch: false,
+  targets: 'deb',
+  iterCopyFile: false,
+  systemTrayIcon: '',
   debug: false,
+  inject: [],
+  safeDomain: [],
 };
 
-export const DEFAULT_APP_NAME = 'Pake';
+// just for cli development
+export const DEFAULT_DEV_PAKE_OPTIONS: PakeCliOptions & {url: string} = {
+  ...DEFAULT_PAKE_OPTIONS,
+  url: 'https://weread.qq.com',
+  name: 'Weread',
+}
